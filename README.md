@@ -1,2 +1,2 @@
 # meuPerfil
-repositório javascript
+Repositório de Perfil Interativo Javascript
