@@ -135,62 +135,84 @@
     </div>
 
     <script>
-        function alterarNome() {
-            const novoNome = prompt("Digite um novo nome:");
-            if (novoNome) {
-                document.getElementById("profileName").innerText = "Nome: " + novoNome;
-            }
+    // Função para alterar o nome no perfil
+    function alterarNome() {
+        // Pede ao usuário para inserir um novo nome
+        const novoNome = prompt("Digite um novo nome:");
+        // Se o nome não for vazio, altera o nome exibido no perfil
+        if (novoNome) {
+            document.getElementById("profileName").innerText = "Nome: " + novoNome;
         }
+    }
 
-        function adicionarHobby() {
-            const hobby = prompt("Digite um novo hobby:");
-            if (hobby) {
-                const li = document.createElement("li");
-                li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-                li.textContent = hobby;
-                const button = document.createElement("button");
-                button.classList.add("btn", "btn-danger", "btn-sm");
-                button.textContent = "Deletar";
-                button.onclick = function() { deletarHobby(button); };
-                li.appendChild(button);
-                document.getElementById("hobbiesList").appendChild(li);
-            }
-        }
+    // Função para adicionar um novo hobby à lista
+    function adicionarHobby() {
+        // Pede ao usuário para inserir um hobby
+        const hobby = prompt("Digite um novo hobby:");
+        // Se o hobby não for vazio, cria o item na lista
+        if (hobby) {
+            const li = document.createElement("li");
+            li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+            li.textContent = hobby;
+            
+            // Cria o botão de deletar para o hobby
+            const button = document.createElement("button");
+            button.classList.add("btn", "btn-danger", "btn-sm");
+            button.textContent = "Deletar";
+            button.onclick = function() { deletarHobby(button); }; // Ao clicar, chama a função para deletar
+            li.appendChild(button);
 
-        function deletarHobby(button) {
-            const li = button.parentElement;
-            li.remove();
+            // Adiciona o hobby na lista do perfil
+            document.getElementById("hobbiesList").appendChild(li);
         }
+    }
 
-        function mudarCorDeFundo() {
-            const cores = [
-                "#FF5733", "#33FF57", "#3357FF", "#F1C40F", 
-                "#8E44AD", "#E74C3C", "#3498DB", "#2ECC71", 
-                "#9B59B6", "#F39C12"
-            ];
-            const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
-            document.body.style.backgroundColor = corAleatoria;
-        }
+    // Função para deletar um hobby da lista
+    function deletarHobby(button) {
+        // Encontra o item da lista e remove
+        const li = button.parentElement;
+        li.remove();
+    }
 
-        function mudarFoto() {
-            const novaFoto = prompt("Digite a URL da nova foto:");
-            if (novaFoto) {
-                document.getElementById("profileImage").src = novaFoto;
-            }
-        }
+    // Função para mudar a cor de fundo da página para uma cor aleatória
+    function mudarCorDeFundo() {
+        const cores = [
+            "#FF5733", "#33FF57", "#3357FF", "#F1C40F", 
+            "#8E44AD", "#E74C3C", "#3498DB", "#2ECC71", 
+            "#9B59B6", "#F39C12"
+        ];
+        // Escolhe uma cor aleatória da lista e aplica como fundo da página
+        const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+        document.body.style.backgroundColor = corAleatoria;
+    }
 
-        function alterarIdade() {
-            const novaIdade = prompt("Digite sua nova idade:");
-            if (novaIdade && !isNaN(novaIdade)) {
-                document.getElementById("profileAge").innerText = "Idade: " + novaIdade;
-            } else {
-                alert("Por favor, digite uma idade válida!");
-            }
+    // Função para mudar a foto de perfil
+    function mudarFoto() {
+        // Pede ao usuário para inserir a URL da nova foto
+        const novaFoto = prompt("Digite a URL da nova foto:");
+        // Se a URL for válida, altera a imagem do perfil
+        if (novaFoto) {
+            document.getElementById("profileImage").src = novaFoto;
         }
+    }
 
-        function mostrarAlerta() {
-            alert("Bem-vindo ao seu perfil");
+    // Função para alterar a idade do perfil
+    function alterarIdade() {
+        // Pede ao usuário para inserir a nova idade
+        const novaIdade = prompt("Digite sua nova idade:");
+        // Verifica se a idade é válida (número)
+        if (novaIdade && !isNaN(novaIdade)) {
+            document.getElementById("profileAge").innerText = "Idade: " + novaIdade;
+        } else {
+            alert("Por favor, digite uma idade válida!"); // Alerta caso a idade não seja válida
         }
-    </script>
+    }
+
+    // Função para mostrar um alerta de boas-vindas
+    function mostrarAlerta() {
+        alert("Bem-vindo ao seu perfil");
+    }
+</script>
+
 </body>
 </html>
